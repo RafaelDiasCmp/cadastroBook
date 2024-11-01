@@ -1,3 +1,5 @@
+<app-book  [book]="book" (saveEmiter)="saveBook()"></app-book>
+
 <div class="container">
     <h3>Livros Cadastrados</h3>
     <table class="table">
@@ -7,6 +9,7 @@
                 <th>Título</th>
                 <th>Autor</th>
                 <th>Preço</th>
+                <th class="text-end">Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +18,10 @@
                 <td>{{book.title}}</td>
                 <td>{{book.author}}</td>
                 <td>{{book.price}}</td>
+                <td class="text-end">
+                    <button class="btn btn-success me-1" (click)="update(book)">Alterar</button>
+                    <button class="btn btn-danger" (click)="remove(book)">Remover</button>
+                </td>
             </tr>
         </tbody>
     </table>

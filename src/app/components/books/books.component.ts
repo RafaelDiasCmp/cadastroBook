@@ -8,6 +8,10 @@ import { Book } from '../../Book';
 })
 export class BooksComponent {
 
+  book: Book = {} as Book;
+  isUpdate : boolean = false;
+  idCount : number = 5;
+
   books: Book[] = [
     {
     id: 1,
@@ -34,4 +38,25 @@ export class BooksComponent {
       price: 80.00
     }
   ];
+
+  saveBook(){
+    if(!this.isUpdate){
+      this.book.id = this.idCount;
+      this.idCount++;
+      this.books.push(this.book);
+  }
+    this.book = {} as Book;
+    this.isUpdate = false;
+  }
+
+  update(selectedBook:Book){
+    this.book = selectedBook;
+    this.isUpdate = true;
+  }
+
+  remove(removeBook:Book){
+    this.books = this.books.filter( b => b !== removeBook);
+
+  }
+
 }
